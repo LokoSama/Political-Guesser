@@ -15,7 +15,7 @@ Once the training is over, the goal is to have a neural network able to guess th
 
 ## Tasks 
 
-- get the tweets from US congress members through Twitter API, and store them (existence of a verified list of memebers account)
+- get the tweets from US congress members through Twitter API, and store them (existence of a verified list of members account)
 - get the political class of each member of the congress, store that
 - setup neural network and datasets
 - train neural network
