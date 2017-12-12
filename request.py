@@ -12,16 +12,34 @@ api = tweepy.API(auth)
 
 public_tweets = api.home_timeline()
 
-# Open/create a file to append data to
-csvFile = open('tweets.csv', 'a')
 
-#Use csv writer
-csvWriter = csv.writer(csvFile)
 
-for member in tweepy.Cursor(api.list_members, 'cspan', 'members-of-congress').items():
-	tweets = api.user_timeline(member.id,count=100)
-	time.sleep(0.1)
-	for tweet in tweets:
-		csvWriter.writerow([tweet.id_str,tweet.user.id, tweet.text.encode('utf-8')])
-		
-csvFile.close()
+def unlabeled_datasets():
+	# Open/create a file to append data to
+	csvFile = open('tweets.csv', 'a')
+
+	#Use csv writer
+	csvWriter = csv.writer(csvFile)
+	for member in tweepy.Cursor(api.list_members, 'cspan', 'members-of-congress').items():
+		tweets = api.user_timeline(member.id,count=100)
+		time.sleep(0.1)
+		for tweet in tweets:
+			csvWriter.writerow([tweet.id_str,tweet.user.id, tweet.text.encode('utf-8')])
+	csvFile.close()
+
+def labeled_datasets():
+	csvFile = open('tweets2.csv', 'a')
+	csvWriter = csv.writer(csvFile)
+	for member in tweepy.Cursor(api.list_members, 'thedemocrats', 'house-democrats').items():
+		tweets = api.user_timeline(member.id,count=100)
+		time.sleep(0.1)
+		for tweet in tweets:
+			csvWriter.writerow([tweet.id_str,tweet.user.id, tweet.text.encode('utf-8'),1])
+	for member in tweepy.Cursor(api.list_members, 'housegop', 'house-republicans').items():
+		tweets = api.user_timeline(member.id,count=100)
+		time.sleep(0.1)
+		for tweet in tweets:
+			csvWriter.writerow([tweet.id_str,tweet.user.id, tweet.text.encode('utf-8'),-1])
+	csvFile.close()
+
+labeled_datasets()
