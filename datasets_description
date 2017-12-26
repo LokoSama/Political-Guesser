@@ -1,2 +1,3 @@
 tweets1.csv : tweets from 'members-of-congress', 100 by members , tweet_id/user_id/text , 57635 lines
-tweets2.csv : tweets from 'house-republicans' and 'house-democrats', 100 by members , tweet_id/user_id/text/LABEL , 43474 lines	
+tweets2.csv : tweets from 'house-republicans' and 'house-democrats', <100 by members , tweet_id/user_id/text/LABEL , 43474 lines
+tweets3.csv : tweets from 'house-republicans' and 'house-democrats', <100 by members , tweet_id/user_id/text/LABEL ,RT filtered , 334445 lines

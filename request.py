@@ -28,18 +28,20 @@ def unlabeled_datasets():
 	csvFile.close()
 
 def labeled_datasets():
-	csvFile = open('tweets2.csv', 'a')
+	csvFile = open('tweets3.csv', 'a')
 	csvWriter = csv.writer(csvFile)
 	for member in tweepy.Cursor(api.list_members, 'thedemocrats', 'house-democrats').items():
 		tweets = api.user_timeline(member.id,count=100)
 		time.sleep(0.1)
 		for tweet in tweets:
-			csvWriter.writerow([tweet.id_str,tweet.user.id, tweet.text.encode('utf-8'),1])
+			if ('RT @' not in tweet.text):
+				csvWriter.writerow([tweet.id_str,tweet.user.id, tweet.text.encode('utf-8'),1])
 	for member in tweepy.Cursor(api.list_members, 'housegop', 'house-republicans').items():
 		tweets = api.user_timeline(member.id,count=100)
 		time.sleep(0.1)
 		for tweet in tweets:
-			csvWriter.writerow([tweet.id_str,tweet.user.id, tweet.text.encode('utf-8'),-1])
+			if ('RT @' not in tweet.text):
+				csvWriter.writerow([tweet.id_str,tweet.user.id, tweet.text.encode('utf-8'),-1])
 	csvFile.close()
 
 labeled_datasets()
