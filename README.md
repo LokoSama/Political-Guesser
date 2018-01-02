@@ -10,12 +10,13 @@ The context of this project is the Project class of the Faculty of Electrical En
 
 ## Idea
 
-The neural network will be trained on tweets coming from United States Congress members, by requesting them using Twitter API.
-Once the training is over, the goal is to have a neural network able to guess the political side of the person emitting the tweet, or at least give the likelihood of the class. The United States congress was choose because of the existence of 2 major political classes, it can be imagined to continue this project with other countries thats contains more political classes.
+Themodel will be trained on tweets coming from United States Congress members, by requesting them using Twitter API.
+Once the training is over, the goal is to have a model able to guess the political side of the person emitting the tweet, or at least give the likelihood of the class. The United States congress was chosen because of the existence of 2 major political classes, it can be imagined to continue this project with other countries thats contains more political classes.
 
-## Tasks 
+## State of the project
 
-- get the tweets from US congress members through Twitter API, and store them (existence of a verified list of members account)
-- get the political class of each member of the congress, store that
-- setup neural network and datasets
-- train neural network
+We have 2 different classifiers : NB classifier with 80% accuracy and SVM classifier with 70% accuracy.
+
+We created 2 final functions : 
+- tweet_guesser : guess the political side from a tweet (based on his text) with the certainty
+- account_guesser : guess the political side from a account (based on his @)
