@@ -28,4 +28,5 @@ The account prediction accuracy is 99% with NB classifier and 87% with SVM class
 To remove hashtags from the datasets, add the following code in the filtering part of the CSV
 
 delete_tags = lambda x:re.sub(r'#\S+', '', x) 
+
 dataset[2] = dataset[2].apply(delete_tags)
