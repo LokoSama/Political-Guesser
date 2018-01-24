@@ -10,13 +10,22 @@ The context of this project is the Project class of the Faculty of Electrical En
 
 ## Idea
 
-Themodel will be trained on tweets coming from United States Congress members, by requesting them using Twitter API.
-Once the training is over, the goal is to have a model able to guess the political side of the person emitting the tweet, or at least give the likelihood of the class. The United States congress was chosen because of the existence of 2 major political classes, it can be imagined to continue this project with other countries thats contains more political classes.
+The model will be trained on tweets coming from United States Congress members, by requesting them using Twitter API.
+Once the training is over, the goal is to have a model able to guess the political side of the person emitting the tweet. The United States congress was chosen because of the existence of 2 major political classes, it can be imagined to continue this project with other countries thats contains more political classes.
 
 ## State of the project
 
-We have 2 different classifiers : NB classifier with 80% accuracy and SVM classifier with 70% accuracy.
+We have 2 different classifiers : NB classifier with 80% accuracy and SVM classifier with 73% accuracy.
 
 We created 2 final functions : 
-- tweet_guesser : guess the political side from a tweet (based on his text) with the certainty
-- account_guesser : guess the political side from a account (based on his @)
+- tweet_prediction : guess the political side from a tweet (based on his text) with the certainty
+- account_prediction : guess the political side from a account (based on his @)
+
+The account prediction accuracy is 99% with NB classifier and 87% with SVM classifier.
+
+## Remove hashtags from dataset
+
+To remove hashtags from the datasets, add the following code in the filtering part of the CSV
+
+delete_tags = lambda x:re.sub(r'#\S+', '', x) 
+dataset[2] = dataset[2].apply(delete_tags)
